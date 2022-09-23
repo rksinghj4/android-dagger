@@ -1,4 +1,4 @@
-package com.example.daggercomponent
+package com.example.fieldinjection
 
 import android.util.Log
 import javax.inject.Inject
