@@ -7,6 +7,9 @@ interface UserRepository {
     fun save(email: String, password: String)
 }
 
+/**
+ * Dagger is allowed to call constructor.
+ */
 class SQLRepository @Inject constructor() : UserRepository {
     override fun save(email: String, password: String) {
         Log.d(TAG, "User saved in DB")
