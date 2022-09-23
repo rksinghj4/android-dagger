@@ -1,5 +1,6 @@
 package com.example.daggercomponent
 
+import android.util.Log
 import javax.inject.Inject
 
 /**
@@ -20,6 +21,9 @@ import javax.inject.Inject
 
 //Above all 4 problems are solved here using constructor injection.
 class UserRegistrationService @Inject constructor(private val  emailService: EmailService,   private val userRepository: UserRepository) {
+    init {
+        Log.d(TAG, "UserRegistrationService initialization")
+    }
     internal fun registerUser(email: String, password: String) {
         userRepository.save(email = email, password = password)
         emailService.send(email, "no-reply@abc.com", "User registered")
