@@ -21,7 +21,7 @@ import javax.inject.Inject
 
 //Above all 4 problems are solved here using constructor injection.
 class UserRegistrationService @Inject constructor(
-    private val emailService: EmailService,
+    private val emailService: NotificationService,
     private val userRepository: UserRepository
 ) {
     init {

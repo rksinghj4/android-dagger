@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var userRegistrationService: UserRegistrationService
 
     @Inject
-    lateinit var emailService: EmailService
+    lateinit var notificationService: NotificationService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +27,6 @@ class MainActivity : AppCompatActivity() {
          component.getEmailService().send("me", "you", "Email sent from MainActivity")*/
 
         userRegistrationService.registerUser("abc@xyz.com", "122")
-        emailService.send("me", "you", "Email sent from MainActivity")
+        notificationService.send("me", "you", "User registered from MainActivity")
     }
 }
