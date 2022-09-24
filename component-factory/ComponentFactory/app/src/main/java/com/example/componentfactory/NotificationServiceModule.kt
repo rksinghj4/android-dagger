@@ -6,7 +6,7 @@ import dagger.Provides
 import javax.inject.Named
 
 @Module
-class NotificationServiceModule {
+class NotificationServiceModule(val  retryCount: Int) {
     //Note: function with @Binds annotation must be abstract and must be in abstract class.
 
     //Just bind because dagger knows how to create EmailService
@@ -25,6 +25,6 @@ class NotificationServiceModule {
     @Provides
     fun getMessageService(): NotificationService {
         //Do additional processing here
-        return MessageService()
+        return MessageService(retryCount)
     }
 }
