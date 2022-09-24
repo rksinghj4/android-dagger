@@ -2,6 +2,7 @@ package com.example.fieldinjection
 
 import android.util.Log
 import javax.inject.Inject
+import javax.inject.Named
 
 /**
  * Problems with the class
@@ -21,7 +22,7 @@ import javax.inject.Inject
 
 //Above all 4 problems are solved here using constructor injection.
 class UserRegistrationService @Inject constructor(
-    private val emailService: NotificationService,
+    @Named("Message") private val notificationService: NotificationService,
     private val userRepository: UserRepository
 ) {
     init {
@@ -30,6 +31,6 @@ class UserRegistrationService @Inject constructor(
 
     internal fun registerUser(email: String, password: String) {
         userRepository.save(email = email, password = password)
-        emailService.send(email, "no-reply@abc.com", "User registered")
+        notificationService.send(email, "no-reply@abc.com", "User registered")
     }
 }

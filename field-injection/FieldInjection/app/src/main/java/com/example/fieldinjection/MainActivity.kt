@@ -3,11 +3,13 @@ package com.example.fieldinjection
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import javax.inject.Inject
+import javax.inject.Named
 
 class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var userRegistrationService: UserRegistrationService
 
+    @Named("Email")
     @Inject
     lateinit var notificationService: NotificationService
 
