@@ -27,6 +27,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        /**
+         * Earlier component was creating NotificationServiceModule  at compile time
+         * but now we need to pass some value at run time that's why we need to provide
+         * NotificationServiceModule object with required param at run time.
+         *
+         * Problem:
+         * If consumer forgot to pass
+         * .notificationServiceModule(NotificationServiceModule(3))
+         * then it will through error.
+         *
+         * Solution:
+         * Create Factory for UserRegistrationComponent
+         */
+
         val component = DaggerUserRegistrationComponent.builder()
             .notificationServiceModule(NotificationServiceModule(3))
             .build()
