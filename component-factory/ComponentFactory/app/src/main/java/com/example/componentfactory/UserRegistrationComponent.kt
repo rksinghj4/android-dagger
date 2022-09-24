@@ -9,7 +9,8 @@ interface UserRegistrationComponent {
     @Component.Factory
     interface Factory  {
         /**
-         * 11- Now component have retryCount and it can supply it anywhere needed 11.
+         * 11- Now component have two integer values with qualifiers and
+         * it can supply these anywhere needed with required qualifier 11.
          */
         fun create(@RetryQualifier @BindsInstance retryCount1: Int,  @EmailRetryQualifier @BindsInstance emailRetryCount: Int): UserRegistrationComponent
     }
