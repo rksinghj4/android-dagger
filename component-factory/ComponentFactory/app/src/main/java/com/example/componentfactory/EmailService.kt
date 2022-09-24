@@ -7,9 +7,12 @@ interface NotificationService {
     fun send(to: String, from: String, body: String?)
 }
 
-class EmailService @Inject constructor() : NotificationService {
+//Note: UserRegistrationComponent has an and interger value with @EmailRetryQualifier,
+// he will supply this value.
+class EmailService @Inject constructor(@EmailRetryQualifier  retryCount: Int) : NotificationService {
+     val retryCountEmail = retryCount
     override fun send(to: String, from: String, body: String?) {
-        Log.d(TAG, "Email: $body")
+        Log.d(TAG, "Email: $body, retryCount = $retryCountEmail")
     }
 }
 

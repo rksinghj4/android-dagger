@@ -1,14 +1,18 @@
 package com.example.componentfactory
 
+import dagger.BindsInstance
 import dagger.Component
 
 @Component (modules = [UserRepositoryModule::class, NotificationServiceModule::class])
 interface UserRegistrationComponent {
-    //Problem: Gradually component will grow in size and
-    // we have to manually add function for each type of dependency to provide. Which is difficult to maintain.
-   /* fun getUserRegistrationService(): UserRegistrationService
-    fun getEmailService(): EmailService*/
 
-    //Solution: Consumer just need to request to component to inform what are all dependencies they need.
+    @Component.Factory
+    interface Factory  {
+        /**
+         * 11- Now component have retryCount and it can supply it anywhere needed 11.
+         */
+        fun create(@RetryQualifier @BindsInstance retryCount1: Int,  @EmailRetryQualifier @BindsInstance emailRetryCount: Int): UserRegistrationComponent
+    }
+
     fun inject(activity: MainActivity) //Pass the consumer.
 }

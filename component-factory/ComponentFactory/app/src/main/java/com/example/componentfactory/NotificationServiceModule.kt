@@ -6,12 +6,14 @@ import dagger.Provides
 import javax.inject.Named
 
 @Module
-class NotificationServiceModule(val  retryCount: Int) {
+//class NotificationServiceModule(val retryCount: Int) { //Problem:  consumer forgot to pass NotificationServiceModule
+class NotificationServiceModule {
+
     //Note: function with @Binds annotation must be abstract and must be in abstract class.
 
     //Just bind because dagger knows how to create EmailService
-//    @Binds
-//    abstract fun bindEmailService(emailService: EmailService): NotificationService
+    //@Binds
+    //abstract fun bindEmailService(emailService: EmailService): NotificationService
 
     @EmailQualifier
     @Provides
@@ -23,7 +25,7 @@ class NotificationServiceModule(val  retryCount: Int) {
      */
     @MessageQualifier
     @Provides
-    fun getMessageService(): NotificationService {
+    fun getMessageService(@RetryQualifier retryCount:  Int): NotificationService {//Now Dagger knows retryCount 11
         //Do additional processing here
         return MessageService(retryCount)
     }
