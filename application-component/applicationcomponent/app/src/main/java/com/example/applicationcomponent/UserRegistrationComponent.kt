@@ -7,7 +7,7 @@ import javax.inject.Singleton
  * All @Singleton annotated  providers and binder will be single within the Component scope.
  */
 @Singleton
-@Component (modules = [UserRepositoryModule::class, NotificationServiceModule::class])
+@Component (modules = [UserRepositoryModule::class, NotificationServiceModule::class, AnalyticsModule::class])
 interface UserRegistrationComponent {
 
     @Component.Factory
