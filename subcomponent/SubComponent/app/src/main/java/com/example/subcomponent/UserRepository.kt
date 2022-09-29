@@ -16,7 +16,7 @@ interface UserRepository {
 // We can apply to place where we @Binds but then we have to apply  @Singleton
 // in all connectors/components who wants to create objects.
 
-@Singleton
+@ActivityScope
 class SQLRepository @Inject constructor(val analyticsService: AnalyticsService) : UserRepository {
     override fun save(email: String, password: String) {
         Log.d(TAG, "User saved in DB")

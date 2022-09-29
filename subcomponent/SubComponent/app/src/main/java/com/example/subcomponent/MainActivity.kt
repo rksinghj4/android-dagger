@@ -11,6 +11,7 @@ import javax.inject.Inject
  */
 
 class MainActivity : AppCompatActivity() {
+
     @Inject
     lateinit var userRegistrationService: UserRegistrationService
 
@@ -30,35 +31,55 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var userRepository1: UserRepository
 
+    @Inject
+    lateinit var analyticsService1: AnalyticsService
+    @Inject
+    lateinit var analyticsService2: AnalyticsService
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //If we initialize DaggerUserRegistrationComponent  in activity then
+        //If we initialize DaggerAppComponent  in activity then
         // it gives activity wide singleton.
         // Moved this to UserApplication: to get application wide  singleton.
-        //val component = DaggerUserRegistrationComponent.factory().create( 4, 111)
 
         /**
          * DaggerUserRegistrationComponent.builder() will through errors
          * so we have to use factory to create object of component.
          * We will not forget to pass required values.
          */
-        val component = (application as UserApplication).userRegistrationComponent
-        component.inject(this)
+        val appcomponent = (application as UserApplication).appComponent
+        val userRegistrationComponent = DaggerUserRegistrationComponent.factory().create( 4, 111, appcomponent)
+        userRegistrationComponent.inject(this)
 
         userRegistrationService.registerUser("abc@xyz.com", "2222")
         notificationService.send("aa", "bb", "notification from MainActivity")
 
         /**
-         * Same component will be fetched from application
-         * there for all singleton annotated instahnce will we same singleton under the component.
+         * Same appComponent will be fetched from application
+         * there for all singleton annotated instance will we same singleton under the appComponent.
          */
-        val component2 = (application as UserApplication).userRegistrationComponent
-        component2.inject(this)
 
-        userRegistrationService.registerUser("abc@xyz.com", "2222")
-        notificationService1.send("aa", "bb", "notification from MainActivity")
+        /**
+         * Using Factory pattern
+         */
 
+       /* val parentAppComponent = (application as UserApplication).parentAppComponent
+        val userRegistrationSubComponent = parentAppComponent.getUserRegistrationSubComponentFactory().create(5, 112)
+        userRegistrationSubComponent.inject(this)
+        userRegistrationService.registerUser("aaaabc@xyz.com", "3333")
+        notificationService1.send("aaa", "bbb", "notification from MainActivity")
+*/
+        /**
+         * Using builder pattern
+         */
+
+        val parentAppComponent2 = (application as UserApplication).parentAppComponent
+        val userRegistrationSubComponent2 = parentAppComponent2.getUserRegistrationSubComponentBuilder().retryCount(2).emailRetryCount(5).build()
+        userRegistrationSubComponent2.inject(this)
+
+        userRegistrationService.registerUser("aaaabc@xyz.com", "3333")
+        notificationService1.send("aaa", "bbb", "notification from MainActivity")
     }
 }

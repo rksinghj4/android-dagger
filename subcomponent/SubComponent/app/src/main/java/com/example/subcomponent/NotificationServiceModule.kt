@@ -16,7 +16,7 @@ class NotificationServiceModule {
     //@Binds
     //abstract fun bindEmailService(emailService: EmailService): NotificationService
 
-    @Singleton // @Singleton annotation is directly applied to providers
+    @ActivityScope // @Singleton annotation is directly applied to providers
     @EmailQualifier
     @Provides
     fun bindEmailService(emailService: EmailService): NotificationService = emailService
@@ -25,7 +25,7 @@ class NotificationServiceModule {
      * Dagger can't create MessageService  object.
      * But we know how to provide. Therefore used Provides.
      */
-    @Singleton
+    @ActivityScope
     @MessageQualifier
     @Provides
     fun getMessageService(@RetryQualifier retryCount:  Int): NotificationService {//Now Dagger knows retryCount 11
