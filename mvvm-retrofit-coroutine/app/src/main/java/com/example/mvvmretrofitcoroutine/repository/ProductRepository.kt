@@ -16,8 +16,8 @@ class ProductRepository @Inject constructor(private val fakerAPI: FakerAPI, priv
     suspend fun getProducts(){
         val result = fakerAPI.getProducts()
         if(result.isSuccessful && result.body() != null){
-            fakerDB.getFakerDAO().addProducts(result.body()!!)
-            _products.postValue(result.body())
+            fakerDB.getFakerDAO().addProducts(result.body()!!)//Save in db first
+            _products.postValue(result.body()) //Then post data to livedata
         }
     }
 
