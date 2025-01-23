@@ -7,13 +7,15 @@ interface NotificationService {
     fun send(to: String, from: String, body: String?)
 }
 
-class EmailService @Inject constructor() : NotificationService{
+//Because we are using @Inject constructor() now dagger got capability to create EmailService objects,
+//whenever, wherever needed.
+class EmailService @Inject constructor() : NotificationService {
     override fun send(to: String, from: String, body: String?) {
         Log.d(TAG, "Email: $body")
     }
 }
 
-class MessageService : NotificationService{
+class MessageService : NotificationService {
     override fun send(to: String, from: String, body: String?) {
         Log.d(TAG, "Message: $body")
     }

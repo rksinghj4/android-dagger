@@ -13,7 +13,7 @@ class NotificationServiceModule {
 //    @Binds
 //    abstract fun bindEmailService(emailService: EmailService): NotificationService
 
-    @Named("Email")
+    @EmailQualifier
     @Provides
     fun bindEmailService(emailService: EmailService): NotificationService = emailService
 
@@ -21,7 +21,7 @@ class NotificationServiceModule {
      * Dagger can't create MessageService  object.
      * But we know how to provide. Therefore used Provides.
      */
-    @Named("Message") //High chances of typos. There for use custom named Qualifier
+    @MessageQualifier
     @Provides
     fun getMessageService(): NotificationService {
         //Do additional processing here

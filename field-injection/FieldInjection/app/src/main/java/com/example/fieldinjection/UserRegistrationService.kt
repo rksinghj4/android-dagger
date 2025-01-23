@@ -22,8 +22,8 @@ import javax.inject.Named
 
 //Above all 4 problems are solved here using constructor injection.
 class UserRegistrationService @Inject constructor(
-    @Named("Message") private val notificationService: NotificationService,
-    private val userRepository: UserRepository
+    @MessageQualifier private val notificationService: NotificationService,
+    @Named("SQLRepo") private val userRepository: UserRepository
 ) {
     init {
         Log.d(TAG, "UserRegistrationService initialization")

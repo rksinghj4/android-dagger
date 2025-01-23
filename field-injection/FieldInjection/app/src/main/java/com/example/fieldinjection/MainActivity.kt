@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var userRegistrationService: UserRegistrationService
 
-    @Named("Email")
+    @EmailQualifier
     @Inject
     lateinit var notificationService: NotificationService
 
