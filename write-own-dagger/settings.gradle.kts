@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "CustomMiniDaggerSample"
 include(":app")
- 
+include(":dagger")
