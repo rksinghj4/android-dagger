@@ -1,9 +1,7 @@
-package com.example.subcomponent
+package com.example.subcomponent.commonmodule
 
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
-import javax.inject.Singleton
 
 //@Module
 //class UserRepositoryModule {

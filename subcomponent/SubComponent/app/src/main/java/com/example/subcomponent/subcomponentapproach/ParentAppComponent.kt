@@ -1,5 +1,6 @@
-package com.example.subcomponent
+package com.example.subcomponent.subcomponentapproach
 
+import com.example.subcomponent.commonmodule.AnalyticsModule
 import dagger.Component
 import javax.inject.Singleton
 
@@ -13,7 +14,7 @@ interface ParentAppComponent {
      */
 
     //fun  getUserRegistrationSubComponentFactory() : UserRegistrationSubComponent.Factory
-
-    fun  getUserRegistrationSubComponentBuilder() : UserRegistrationSubComponent.Builder
+    //ParentAppComponent has to create subcomponent builder
+    fun getUserRegistrationSubComponentBuilder(): UserRegistrationSubComponent.Builder
 
 }

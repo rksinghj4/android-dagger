@@ -1,8 +1,10 @@
-package com.example.subcomponent
+package com.example.subcomponent.commonmodule
 
 import android.util.Log
+import com.example.subcomponent.AnalyticsService
+import com.example.subcomponent.TAG
+import com.example.subcomponent.customannotations.ActivityScope
 import javax.inject.Inject
-import javax.inject.Singleton
 
 interface UserRepository {
     fun save(email: String, password: String)

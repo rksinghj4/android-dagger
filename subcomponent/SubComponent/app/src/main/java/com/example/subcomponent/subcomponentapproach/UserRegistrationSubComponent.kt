@@ -1,7 +1,12 @@
-package com.example.subcomponent
+package com.example.subcomponent.subcomponentapproach
 
+import com.example.subcomponent.customannotations.ActivityScope
+import com.example.subcomponent.customannotations.EmailRetryQualifier
+import com.example.subcomponent.MainActivity
+import com.example.subcomponent.commonmodule.NotificationServiceModule
+import com.example.subcomponent.customannotations.RetryQualifier
+import com.example.subcomponent.commonmodule.UserRepositoryModule
 import dagger.BindsInstance
-import dagger.Component
 import dagger.Subcomponent
 
 @ActivityScope

@@ -1,4 +1,4 @@
-package com.example.subcomponent
+package com.example.subcomponent.customannotations
 
 import java.lang.annotation.Documented
 import java.lang.annotation.Retention

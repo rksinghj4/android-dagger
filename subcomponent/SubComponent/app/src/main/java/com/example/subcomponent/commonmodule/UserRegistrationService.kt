@@ -1,8 +1,9 @@
-package com.example.subcomponent
+package com.example.subcomponent.commonmodule
 
 import android.util.Log
+import com.example.subcomponent.TAG
+import com.example.subcomponent.customannotations.MessageQualifier
 import javax.inject.Inject
-import javax.inject.Named
 
 /**
  * Problems with the class

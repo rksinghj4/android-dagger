@@ -1,10 +1,11 @@
-package com.example.subcomponent
+package com.example.subcomponent.commonmodule
 
-import dagger.Binds
+import com.example.subcomponent.customannotations.ActivityScope
+import com.example.subcomponent.customannotations.EmailQualifier
+import com.example.subcomponent.customannotations.MessageQualifier
+import com.example.subcomponent.customannotations.RetryQualifier
 import dagger.Module
 import dagger.Provides
-import javax.inject.Named
-import javax.inject.Singleton
 
 @Module
 //class NotificationServiceModule(val retryCount: Int) { //Problem:  consumer forgot to pass NotificationServiceModule
