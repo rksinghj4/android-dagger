@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "CustomMiniDaggerSample"
 include(":app")
 include(":dagger")
+include(":dagger-compiler")

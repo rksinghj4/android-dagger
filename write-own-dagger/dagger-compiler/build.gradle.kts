@@ -2,6 +2,7 @@ plugins {
     id("java-library")
     id("org.jetbrains.kotlin.jvm")
     id("kotlin")
+    id("kotlin-kapt")
 }
 
 java {
@@ -14,3 +15,9 @@ kotlin {
         jvmToolchain(8)
     }
 }
+
+dependencies {
+    implementation(project(":dagger"))//To include annotations defined my own dagger module/package
+    implementation("com.squareup:kotlinpoet:2.0.0")//For code generation
+}
+
