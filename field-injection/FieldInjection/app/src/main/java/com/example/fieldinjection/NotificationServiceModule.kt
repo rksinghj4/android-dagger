@@ -13,6 +13,8 @@ class NotificationServiceModule {
 //    @Binds
 //    abstract fun bindEmailService(emailService: EmailService): NotificationService
 
+    //Yahan Scope(@Singleton, @Raj) ka thappa nahi laga or nahi  UserRegistrationComponent pe laga j
+    // Therefore every time we will get new object created for NotificationService.
     @EmailQualifier
     @Provides
     fun bindEmailService(emailService: EmailService): NotificationService = emailService
