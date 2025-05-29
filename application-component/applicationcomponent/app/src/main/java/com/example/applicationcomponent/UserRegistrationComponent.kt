@@ -17,7 +17,7 @@ interface UserRegistrationComponent {//Component is a bride between provider and
          * 11- Now component have two integer values with qualifiers and
          * it can supply these anywhere needed with required qualifier.
          */
-        fun create(
+        fun create(//Run time pe value pass karne ka best tarika
             @RetryQualifier @BindsInstance retryCount1: Int,
             @EmailRetryQualifier @BindsInstance emailRetryCount: Int
         ): UserRegistrationComponent

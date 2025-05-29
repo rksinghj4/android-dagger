@@ -14,7 +14,7 @@ import dagger.Component
  */
 @ActivityScope
 @Component(
-    dependencies = [AppComponent::class],//Note UserRegistrationComponent depends upon bigger component
+    dependencies = [AppComponent::class],//Note UserRegistrationComponent depends upon bigger Bridge/component
     // so bigger component has to add signature method
     modules = [UserRepositoryModule::class, NotificationServiceModule::class]
 )

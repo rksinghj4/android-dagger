@@ -25,7 +25,7 @@ class NotificationServiceModule {
      * Dagger can't create MessageService  object.
      * But we know how to provide. Therefore used Provides.
      */
-    @Singleton
+    @Singleton//Jab tak component jinda h. tab tak hi ye NotificationService dependency jinda rahegi
     @MessageQualifier
     @Provides
     fun getMessageService(@RetryQualifier retryCount:  Int): NotificationService {//Now Dagger knows retryCount 11

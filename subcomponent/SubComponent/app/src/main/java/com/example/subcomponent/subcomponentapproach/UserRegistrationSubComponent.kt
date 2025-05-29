@@ -10,7 +10,8 @@ import dagger.BindsInstance
 import dagger.Subcomponent
 
 @ActivityScope
-@Subcomponent(
+@Subcomponent(//Chhota ban k dependencies mang lo Bade @Component se.
+// But yahan dependencies = add mat karo bcoz @Subcomponent laga liya h
     modules = [UserRepositoryModule::class, NotificationServiceModule::class]
 )
 interface UserRegistrationSubComponent {
@@ -29,8 +30,9 @@ interface UserRegistrationSubComponent {
     /**
      * Note: Only one method can create a given subcomponent.
      */
-
-    @Subcomponent.Builder
+//Chhota ban ke dependency mang rahe ho to apna object create karne ka tarika
+// bigger life time wale component  ko bata do (i.eBuilder pattern)
+    @Subcomponent.Builder//Mujhe bade @Component se dependency chahiye m hi chhota ban jata hun
     interface Builder {
         fun build(): UserRegistrationSubComponent
         fun  retryCount(@RetryQualifier @BindsInstance retryCount1: Int): Builder
